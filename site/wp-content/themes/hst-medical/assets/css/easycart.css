@@ -1,0 +1,196 @@
+/*
+ * HST Medical: WP EasyCart overrides (product page, cart, checkout, account).
+ * Loaded only on EasyCart screens, after EasyCart's own CSS. No template forking: EasyCart's markup
+ * (base-responsive-v3) is restyled onto the theme tokens in style.css. Selectors are scoped to body .ec-wrap.ec-wrap
+ * so they outrank EasyCart's generic rules without !important where possible.
+ */
+
+/* ---------- type + reset of EasyCart's display styling ---------- */
+body .ec-wrap.ec-wrap, body .ec-wrap.ec-wrap :where(div, span, p, li, td, th, label, input, select, textarea, button, a, h1, h2, h3, h4) {
+	font-family: var(--font) !important;
+	letter-spacing: normal !important;
+}
+body .ec-wrap.ec-wrap :where(th, label, .ec_cart_header, .ec_cart_button, .ec_cart_backorders_present, .ec_details_tab, .ec_cart_breadcrumb, .ec_account_subheader, .ec_cart_input_row label) {
+	text-transform: none !important;
+}
+body .ec-wrap.ec-wrap { padding-bottom: 1rem; }
+body .ec-wrap.ec-wrap a:not(.btn) { color: var(--brand-2); }
+body .ec-wrap.ec-wrap input[type="text"], body .ec-wrap.ec-wrap input[type="email"], body .ec-wrap.ec-wrap input[type="password"], body .ec-wrap.ec-wrap input[type="tel"],
+body .ec-wrap.ec-wrap input[type="number"], body .ec-wrap.ec-wrap select, body .ec-wrap.ec-wrap textarea {
+	min-height: 44px; padding: .5rem .8rem !important; border: 1.5px solid var(--line-2) !important; border-radius: var(--r-s) !important;
+	background: #fff !important; color: var(--ink) !important; font-size: 1rem !important; box-shadow: none !important;
+}
+body .ec-wrap.ec-wrap input:focus, body .ec-wrap.ec-wrap select:focus, body .ec-wrap.ec-wrap textarea:focus { outline: none; border-color: var(--navy) !important; box-shadow: 0 0 0 3px var(--blue-tint) !important; }
+
+/* ---------- buttons (EasyCart's add-to-cart, checkout, update, coupon...) ---------- */
+body .ec-wrap.ec-wrap :is(.ec_details_add_to_cart input, .ec_details_add_to_cart button, input[type="submit"], button.ec_cart_button, a.ec_cart_button, div.ec_cart_button, .ec_account_button, .ec_cart_button_row input) {
+	display: inline-flex; align-items: center; justify-content: center; min-height: 40px !important; height: auto !important;
+	padding: .4rem 1.05rem !important; border: 1.5px solid var(--brand) !important; border-radius: var(--r-s) !important;
+	background: var(--brand) !important; color: #fff !important; font-weight: 600 !important; font-size: .9rem !important;
+	text-transform: none !important; text-decoration: none !important; line-height: 1.3 !important; cursor: pointer; box-shadow: none !important;
+	transition: background .2s, border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+body .ec-wrap.ec-wrap :is(.ec_details_add_to_cart input, .ec_details_add_to_cart button, input[type="submit"], .ec_cart_button):hover { background: var(--brand-2) !important; border-color: var(--brand-2) !important; transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(200, 23, 93, .7) !important; }
+body .ec-wrap.ec-wrap :is(.ec_details_add_to_cart input, input[type="submit"], .ec_cart_button):active { transform: scale(.97); }
+body .ec-wrap.ec-wrap a.ec_cart_button_shopping, body .ec-wrap.ec-wrap .ec_cartitem_update_button { background: #fff !important; color: var(--ink) !important; border-color: var(--line-2) !important; }
+body .ec-wrap.ec-wrap a.ec_cart_button_shopping:hover, body .ec-wrap.ec-wrap .ec_cartitem_update_button:hover { border-color: var(--navy) !important; color: var(--navy) !important; background: #fff !important; }
+body .ec-wrap.ec-wrap .ec_cart_button_row { margin: .5rem 0 0 !important; }
+body .ec-wrap.ec-wrap .ec_cart_button_row .ec_cart_button { width: 100%; }
+
+/* quantity steppers */
+body .ec-wrap.ec-wrap :is(.ec_details_quantity, .ec_cartitem_quantity_table) { display: inline-flex; align-items: stretch; border: 1.5px solid var(--line-2); border-radius: var(--r-s); overflow: hidden; }
+body .ec-wrap.ec-wrap :is(input.ec_minus, input.ec_plus, .ec_minus, .ec_plus) {
+	min-width: 44px !important; min-height: 44px !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important;
+	background: var(--well) !important; color: var(--ink) !important; font-size: 1.1rem !important; font-weight: 600 !important;
+}
+body .ec-wrap.ec-wrap :is(input.ec_minus, input.ec_plus):hover { background: var(--blue-tint) !important; }
+body .ec-wrap.ec-wrap :is(input.ec_quantity, .ec_quantity) { width: 56px !important; min-height: 44px; border: 0 !important; border-radius: 0 !important; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* ---------- product page ---------- */
+body .ec-wrap.ec-wrap .ec_product_details_page { margin-top: .5rem; }
+body .ec-wrap.ec-wrap .ec_details_content { display: grid; gap: 1.5rem; }
+@media (min-width: 860px) {
+	body .ec-wrap.ec-wrap .ec_details_content { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+	body .ec-wrap.ec-wrap .ec_details_images, body .ec-wrap.ec-wrap .ec_details_right { width: auto !important; float: none !important; padding: 0 !important; margin: 0 !important; }
+}
+body .ec-wrap.ec-wrap .ec_details_main_image { background: #fff !important; border: 0 !important; border-radius: 0 !important; padding: 4% !important; }
+body .ec-wrap.ec-wrap .ec_details_main_image img { display: block; width: 100%; max-width: 520px; aspect-ratio: 1 / 1; height: auto; object-fit: contain; margin: 0 auto; } /* EasyCart prints no width/height: reserve the square so nothing shifts */
+body .ec-wrap.ec-wrap .ec_details_title, body .ec-wrap.ec-wrap .ec_details_title h1 { color: var(--navy) !important; font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2.1rem) !important; font-weight: 700 !important; line-height: 1.25 !important; text-decoration: none !important; margin: 0 0 .5rem !important; }
+body .ec-wrap.ec-wrap .ec_title_divider { display: none !important; }
+body .ec-wrap.ec-wrap :is(.ec_details_price, .ec_details_single_price, .ec_product_price) { color: var(--brand-2) !important; font-size: 1.6rem !important; font-weight: 700 !important; font-variant-numeric: tabular-nums; }
+body .ec-wrap.ec-wrap .ec_details_model_number { font-size: .85rem !important; color: var(--muted) !important; margin: .25rem 0 .75rem !important; }
+body .ec-wrap.ec-wrap .ec_details_description { font-size: 1rem !important; color: var(--ink-2) !important; line-height: 1.6 !important; }
+body .ec-wrap.ec-wrap .ec_details_option_row { margin: .75rem 0 !important; }
+body .ec-wrap.ec-wrap .ec_details_options select { width: min(100%, 360px) !important; }
+body .ec-wrap.ec-wrap :is(.ec_details_final_price, .ec_details_added_price) { color: var(--ink) !important; font-weight: 600 !important; font-variant-numeric: tabular-nums; }
+body .ec-wrap.ec-wrap .ec_details_add_to_cart_area { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin: 1rem 0 !important; }
+body .ec-wrap.ec-wrap .ec_details_options_divider_pre, body .ec-wrap.ec-wrap .ec_details_options_divider_post { border-color: var(--line) !important; }
+
+/* description tab */
+body .ec-wrap.ec-wrap .ec_details_tabs { border-bottom: 1px solid var(--line) !important; margin-top: 2.5rem !important; }
+body .ec-wrap.ec-wrap .ec_details_tab { background: none !important; border: 0 !important; border-bottom: 2px solid transparent !important; padding: .75rem 0 !important; margin-right: 1.5rem !important; color: var(--ink-2) !important; font-weight: 600 !important; font-size: 1rem !important; }
+body .ec-wrap.ec-wrap .ec_details_tab.ec_active { color: var(--navy) !important; border-bottom-color: var(--brand) !important; }
+body .ec-wrap.ec-wrap .ec_details_description_content { max-width: 72ch; padding: 1.25rem 0 0 !important; color: var(--ink-2); font-size: 1.0625rem; line-height: 1.7; }
+body .ec-wrap.ec-wrap .ec_details_description_content h3 { color: var(--navy); font-size: 1.1rem; margin: 1.5rem 0 .4rem; }
+body .ec-wrap.ec-wrap .ec_details_description_content ul { list-style: disc; padding-left: 1.25rem; }
+body .ec-wrap.ec-wrap .ec_details_description_content li { margin: .25rem 0; }
+body .ec-wrap.ec-wrap .ec_details_description_content .caution { margin-top: 1.25rem; padding: .75rem 1rem; background: var(--well); border-radius: var(--r-s); font-size: .9rem; }
+body .ec-wrap.ec-wrap .ec_details_social { display: none !important; }
+
+/* ---------- cart ---------- */
+body .ec-wrap.ec-wrap .ec_cart_breadcrumbs { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin: 0 0 1.5rem !important; font-size: .95rem !important; }
+body .ec-wrap.ec-wrap .ec_cart_breadcrumb { color: var(--brand-2) !important; font-weight: 600 !important; font-size: .95rem !important; }
+body .ec-wrap.ec-wrap .ec_cart_breadcrumb.ec_inactive { color: var(--muted) !important; font-weight: 500 !important; }
+body .ec-wrap.ec-wrap .ec_cart_breadcrumb_divider { color: var(--line-2) !important; }
+body .ec-wrap.ec-wrap .ec_cart_page { display: grid; gap: 1.5rem; }
+@media (min-width: 960px) {
+	body .ec-wrap.ec-wrap .ec_cart_page { grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr); gap: 2rem; align-items: start; }
+	body .ec-wrap.ec-wrap .ec_cart_left, body .ec-wrap.ec-wrap .ec_cart_right { width: auto !important; float: none !important; padding: 0 !important; margin: 0 !important; }
+	body .ec-wrap.ec-wrap .ec_cart_breadcrumbs, body .ec-wrap.ec-wrap .ec_cart_error { grid-column: 1 / -1; }
+}
+body .ec-wrap.ec-wrap .ec_cart { width: 100%; border-collapse: collapse; }
+body .ec-wrap.ec-wrap .ec_cart th { padding: 0 .5rem .6rem !important; background: none !important; border: 0 !important; color: var(--muted) !important; font-size: .8rem !important; font-weight: 600 !important; text-align: left; }
+body .ec-wrap.ec-wrap .ec_cart td { padding: .9rem .5rem !important; border-top: 1px solid var(--line) !important; vertical-align: middle; }
+body .ec-wrap.ec-wrap .ec_cartitem_image img { width: 72px; height: 72px; object-fit: contain; background: #fff; }
+body .ec-wrap.ec-wrap .ec_cartitem_title a, body .ec-wrap.ec-wrap .ec_cartitem_title { color: var(--ink) !important; font-weight: 600 !important; font-size: 1rem !important; text-decoration: none; }
+body .ec-wrap.ec-wrap :is(.ec_cartitem_price, .ec_cartitem_total) { font-variant-numeric: tabular-nums; color: var(--ink) !important; font-size: 1rem !important; }
+body .ec-wrap.ec-wrap .ec_cartitem_total { font-weight: 700 !important; }
+body .ec-wrap.ec-wrap .ec_cartitem_delete { color: var(--muted) !important; }
+body .ec-wrap.ec-wrap .ec_cart_right { background: var(--well); border: 0; border-radius: var(--r); padding: 1.25rem !important; }
+body .ec-wrap.ec-wrap .ec_cart_header { color: var(--navy) !important; font-size: 1.05rem !important; font-weight: 700 !important; border: 0 !important; padding: 0 0 .5rem !important; margin: 1rem 0 .25rem !important; background: none !important; }
+body .ec-wrap.ec-wrap .ec_cart_header.ec_top { margin-top: 0 !important; }
+body .ec-wrap.ec-wrap .ec_cart_price_row { display: flex; justify-content: space-between; gap: 1rem; padding: .35rem 0 !important; border-top: 0 !important; font-size: .95rem !important; color: var(--ink-2) !important; font-variant-numeric: tabular-nums; }
+body .ec-wrap.ec-wrap .ec_cart_price_row > div { float: none !important; width: auto !important; }
+body .ec-wrap.ec-wrap .ec_order_total, body .ec-wrap.ec-wrap .ec_order_total * { color: var(--ink) !important; font-weight: 700 !important; font-size: 1.1rem !important; }
+body .ec-wrap.ec-wrap :is(.ec_cart_error_message, .ec_cart_error) { color: var(--error) !important; }
+body .ec-wrap.ec-wrap .ec_cart_success_message { color: var(--ok) !important; }
+
+/* ---------- checkout + account (same form language as the theme's .form) ---------- */
+body .ec-wrap.ec-wrap :is(.ec_cart_input_row, .ec_account_input_row) { margin: 0 0 .9rem !important; }
+body .ec-wrap.ec-wrap :is(.ec_cart_input_row, .ec_account_input_row) label { display: block; margin-bottom: .3rem; font-weight: 600 !important; font-size: .9rem !important; color: var(--ink) !important; }
+body .ec-wrap.ec-wrap :is(.ec_account_page, .ec_account_login, .ec_account_register) { max-width: 960px; }
+
+/* ---------- quantity table (EasyCart builds the cart stepper as a nested table) ---------- */
+body .ec-wrap.ec-wrap .ec_cartitem_quantity_table :is(tbody, tr) { display: flex !important; align-items: stretch; }
+body .ec-wrap.ec-wrap .ec_cartitem_quantity_table td { display: block !important; width: auto !important; padding: 0 !important; border: 0 !important; }
+body .ec-wrap.ec-wrap .ec_cartitem_update_button { margin-top: .4rem !important; min-height: 38px !important; font-size: .85rem !important; }
+body .ec-wrap.ec-wrap .ec_cartitem_delete { text-transform: none !important; font-size: .85rem !important; text-decoration: underline; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 759px) {
+	body .ec-wrap.ec-wrap .ec_cart thead { display: none; }
+	body .ec-wrap.ec-wrap .ec_cart, body .ec-wrap.ec-wrap .ec_cart > tbody { display: block; width: 100%; }
+	body .ec-wrap.ec-wrap .ec_cart tr.ec_cartitem_row {
+		display: grid !important; grid-template-columns: 72px minmax(0, 1fr); gap: .35rem .9rem; align-items: start;
+		padding: 1rem 0; border-top: 1px solid var(--line); text-align: left !important;
+	}
+	body .ec-wrap.ec-wrap .ec_cart tr.ec_cartitem_row > td { display: block !important; width: auto !important; padding: 0 !important; border: 0 !important; text-align: left !important; }
+	body .ec-wrap.ec-wrap .ec_cart .ec_cartitem_image { grid-column: 1; grid-row: 1 / span 4; }
+	body .ec-wrap.ec-wrap .ec_cart :is(.ec_cartitem_details, .ec_cartitem_price, .ec_cartitem_quantity, .ec_cartitem_total) { grid-column: 2; }
+	body .ec-wrap.ec-wrap .ec_cart .ec_cartitem_remove_column { grid-column: 2; grid-row: 5; }
+	body .ec-wrap.ec-wrap .ec_cart :is(.ec_cartitem_title, .ec_cartitem_details) { text-align: left !important; font-size: 1rem !important; }
+	body .ec-wrap.ec-wrap .ec_cart .ec_cartitem_total::before { content: "Total: "; font-weight: 500; color: var(--muted); }
+}
+
+/* ---------- product page additions (inc/easycart-parts.php + assets/js/easycart.js) ---------- */
+/* pack-size tiles: replace EasyCart's select once JS is running (the select stays as the no-JS fallback) */
+body .ec-wrap.ec-wrap .hst-packs { border: 0; padding: 0; margin: 1rem 0 .25rem; min-width: 0; clear: both; width: 100%; }
+body .ec-wrap.ec-wrap .hst-packs legend { font-weight: 600; font-size: .92rem; color: var(--ink); margin-bottom: .55rem; padding: 0; }
+body .ec-wrap.ec-wrap .hst-packs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .5rem; }
+body .ec-wrap.ec-wrap .hst-pack {
+	position: relative; display: grid; gap: .15rem; padding: .65rem .75rem; border-radius: var(--r);
+	background: var(--well); cursor: pointer; transition: background .15s, box-shadow .15s, transform .15s var(--ease);
+}
+body .ec-wrap.ec-wrap .hst-pack:hover { background: var(--blue-tint); transform: translateY(-1px); }
+body .ec-wrap.ec-wrap .hst-pack input { position: absolute; opacity: 0; pointer-events: none; }
+body .ec-wrap.ec-wrap .hst-pack-label { font-weight: 600; font-size: .88rem; color: var(--ink); line-height: 1.3; }
+body .ec-wrap.ec-wrap .hst-pack-price { font-weight: 700; color: var(--brand-2); font-variant-numeric: tabular-nums; }
+body .ec-wrap.ec-wrap .hst-pack-code { font-size: .74rem; color: var(--muted); }
+body .ec-wrap.ec-wrap .hst-pack.is-on { background: var(--brand-tint); box-shadow: inset 0 0 0 2px var(--brand); }
+body .ec-wrap.ec-wrap .hst-pack:has(input:focus-visible) { outline: 2px solid var(--navy); outline-offset: 2px; }
+body .ec-wrap.ec-wrap .hst-has-tiles .ec_details_options_basic .ec_details_option_row,
+body .ec-wrap.ec-wrap .hst-has-tiles .ec_details_options_divider_pre { display: none !important; }
+body .ec-wrap.ec-wrap .ec_details_added_price { display: none !important; }
+
+/* assurance row under the button */
+body .ec-wrap.ec-wrap .hst-assure { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: .6rem; clear: both; width: 100%; }
+body .ec-wrap.ec-wrap .hst-assure li { display: flex; gap: .65rem; align-items: flex-start; font-size: .84rem; color: var(--ink-2); line-height: 1.4; }
+body .ec-wrap.ec-wrap .hst-assure b { display: block; color: var(--ink); font-size: .88rem; }
+body .ec-wrap.ec-wrap .hst-assure .ic { width: 22px; height: 22px; color: var(--navy); flex: none; margin-top: .1rem; }
+
+/* extra tabs */
+body .ec-wrap.ec-wrap .ec_details_tab { cursor: pointer; }
+body .ec-wrap.ec-wrap .hst-tab-panel { max-width: 72ch; padding: 1.25rem 0 0; color: var(--ink-2); font-size: 1.0625rem; line-height: 1.7; }
+body .ec-wrap.ec-wrap .hst-tab-panel ul { list-style: disc; padding-left: 1.25rem; }
+body .ec-wrap.ec-wrap .hst-tab-panel li { margin: .25rem 0; }
+body .ec-wrap.ec-wrap .hst-tab-panel .caution { margin-top: 1rem; padding: .75rem 1rem; background: var(--well); border-radius: var(--r-s); font-size: .9rem; }
+
+/* related products */
+body .ec-wrap.ec-wrap .hst-related { margin-top: 3rem; }
+
+/* sticky buy bar (phones) */
+.hst-buybar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; background: #fff; box-shadow: 0 -6px 18px -10px rgba(24, 33, 50, .35); padding: .6rem 16px calc(.6rem + env(safe-area-inset-bottom)); }
+.hst-buybar-in { display: grid; grid-template-columns: 1fr auto auto; gap: .75rem; align-items: center; max-width: var(--wrap); margin: 0 auto; }
+.hst-buybar-name { font-weight: 600; font-size: .88rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hst-buybar-price { font-weight: 700; color: var(--brand-2); font-variant-numeric: tabular-nums; }
+@media (min-width: 900px) { .hst-buybar { display: none !important; } }
+/* keep the chat launcher above the bar on phones */
+body:has(.hst-buybar:not([hidden])) .hstf { bottom: 76px; }
+
+/* checkout: Singapore needs no state field */
+body .ec-wrap.ec-wrap .hst-hidden-sg { display: none !important; }
+
+/* Cart step divider + remove control: EasyCart draws these with dashicons, which the site does not load (performance) */
+body .ec-wrap.ec-wrap .ec_cart_breadcrumb_divider { font-family: inherit; width: 8px; margin: 0 1.25rem; }
+body .ec-wrap.ec-wrap .ec_cart_breadcrumb_divider:before { content: "" !important; display: block; width: 7px; height: 7px; margin-top: .6em; border-top: 1.5px solid var(--ink-2); border-right: 1.5px solid var(--ink-2); transform: rotate(45deg); }
+body .ec-wrap.ec-wrap .ec_cartitem_delete { font-family: inherit; border: 1.5px solid var(--line-2) !important; color: var(--ink-2); display: grid; place-items: center; transition: border-color .15s ease, color .15s ease; }
+body .ec-wrap.ec-wrap .ec_cartitem_delete:hover { border-color: var(--brand) !important; color: var(--brand); }
+body .ec-wrap.ec-wrap .ec_cartitem_delete:before { content: "\00d7" !important; font-family: inherit; font-size: 18px; line-height: 1; }
+body .ec-wrap.ec-wrap .ec_cart_table .ec_cartitem_delete:before { content: "" !important; }body .ec-wrap.ec-wrap .hst-zip-full .ec_cart_input_right_half { width: 100%; float: none; margin-left: 0; padding-left: 0; }
+
+/* EasyCart's promotion notice ("S$20 off storewide (spend S$80)") above the product: it floats at 100% width,
+   which would collapse the product grid beside it; clear the grid and show the notice as a slim tinted line. */
+body .ec-wrap.ec-wrap .ec_details_content { clear: both; }
+body .ec-wrap.ec-wrap .ec_cart_success { float: none; width: auto; margin: 0 0 1.25rem; padding: .6rem 1rem; background: var(--brand-tint); border: 0; border-radius: var(--r); color: var(--brand-2); font-size: .92rem; font-weight: 600; text-align: left; }
+body .ec-wrap.ec-wrap .ec_cart_success > div { padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; }
+body .ec-wrap.ec-wrap .ec_details_price_promo_discount .dashicons { display: none; }

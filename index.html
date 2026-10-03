@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>HST Medical Website Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one column; the website preview links first, then the bid summary as one plain list */
+:root {
+  --bg: #f6f7fa; --paper: #ffffff; --ink: #16213a; --ink-2: #4a5468; --line: #e1e5ee;
+  --accent: #3167ca; --accent-ink: #ffffff; --accent-soft: #e8effb; --warn: #8a5a00; --warn-soft: #fdf3dc;
+  --display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0f1522; --paper: #161e2e; --ink: #e8ecf4; --ink-2: #aeb7c8; --line: #283246;
+    --accent: #7ea6ef; --accent-ink: #0f1522; --accent-soft: #1d2a44; --warn: #f0c46a; --warn-soft: #33290f; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--body); padding-inline: 16px; padding-block: 32px 56px; }
+.page { max-width: 820px; margin: 0 auto; display: grid; gap: 22px; }
+h1, h2 { font-family: var(--display); line-height: 1.2; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.3rem); font-weight: 800; letter-spacing: -.01em; }
+h2 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font: 600 .75rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.sub { color: var(--ink-2); max-width: 64ch; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; }
+.cta { display: inline-flex; align-items: center; gap: 8px; justify-self: start; padding: 12px 18px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; }
+.cta:hover, .cta:focus-visible { filter: brightness(1.08); }
+.links { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.links a { display: inline-block; padding: 7px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .9rem; font-weight: 600; text-decoration: none; }
+.links a:hover, .links a:focus-visible { text-decoration: underline; }
+.note { font-size: .88rem; color: var(--warn); background: var(--warn-soft); border-radius: 8px; padding: 10px 12px; }
+ul.summary { margin: 0; padding-left: 1.2rem; display: grid; gap: 9px; }
+ul.summary li::marker { color: var(--accent); }
+.foot { font-size: .82rem; color: var(--ink-2); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header style="display:grid;gap:8px">
+    <p class="eyebrow">TechNext &middot; internal review &middot; temporary link</p>
+    <h1>HST Medical website: our build and bid summary</h1>
+    <p class="sub">A browsable copy of the new HST Medical website we built for the RFP, and the summary of whether we should keep bidding.</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-site">
+    <h2 id="h-site">See the website</h2>
+    <a class="cta" href="site/">Open the website preview &rarr;</a>
+    <ul class="links" aria-label="Pages worth a look">
+      <li><a href="site/store/rheuma-salve-balm/">Product page (pack sizes with photos)</a></li>
+      <li><a href="site/shop/">All products</a></li>
+      <li><a href="site/shop/pain-relief/">A range page</a></li>
+      <li><a href="site/where-to-buy/">Where to buy (30 stores)</a></li>
+      <li><a href="site/about/">About</a></li>
+      <li><a href="site/contact/">Contact</a></li>
+      <li><a href="site/blog/">Health notes (95 posts)</a></li>
+    </ul>
+    <p class="note">This is a static copy for viewing only. The shop cart, checkout, buying through the chat and the contact forms need the full WordPress site and do not work here. Everything else (pages, products, photos, links, the chat's answers) is as built.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-sum">
+    <h2 id="h-sum">Bid summary</h2>
+    <ul class="summary">
+      <li>An agency sent us a one-page RFP to rebuild hstmedical.com on classic WordPress, keeping their WP EasyCart online shop.</li>
+      <li>The RFP came from McGallen &amp; Bolden, HST's PR agency, not from HST directly. We don't know who will sign or pay.</li>
+      <li>There's no budget, no deadline, no contact person and no scoring criteria, but they want a fixed price.</li>
+      <li>HST Medical was bought by Kowa Pharmaceutical Asia (part of Japan's Kowa group) on 29 May 2026 and plans to expand across Southeast Asia.</li>
+      <li>That makes them a good long-term client. It could lead to Odoo ERP work later, even though this RFP is only for a website.</li>
+      <li>Our new website is already built and meets every RFP requirement.</li>
+      <li>It already has their real content: 95 blog posts, real product photos, 30 stockist stores, and their delivery and shipping terms.</li>
+      <li>Their staff can edit everything themselves in normal WordPress screens, with no code needed.</li>
+      <li>It loads fast on a slow 4G phone (1.0 to 2.2 seconds) and passes WordPress's official code check.</li>
+      <li>Old website links still work after the switch, so they won't lose their Google rankings.</li>
+      <li>Because the work is mostly done, finishing the bid takes only about 2 days.</li>
+      <li>If we win, going live needs about 13 to 23 more working days: hosting, payment setup, moving customers and orders, client reviews, launch and training.</li>
+      <li>Our chance of winning is roughly 25 to 40%, because the agency controls the process and may have its own preferred developers.</li>
+      <li>With that chance, bidding is worth it as long as the project's profit is worth more than about 5 to 8 working days.</li>
+      <li>The biggest risk is a fixed price where the work keeps growing, especially data migration and extra review rounds.</li>
+      <li>Other risks: the agency may only be comparing prices or collecting ideas, payments could be slow through an agency, and Kowa could delay or cancel.</li>
+      <li>Their current shop uses the paid EasyCart PRO version. The free version takes 2% of every sale, so they must keep their PRO licence.</li>
+      <li>They want "perfect" speed and code scores. We can't promise 100%, because two warnings come from the parent theme they chose and speed depends on their hosting.</li>
+      <li>Our recommendation: yes, keep bidding, but don't quote a price until they tell us the budget, who pays, the deadline, what data to move, the hosting, and the payment gateway.</li>
+      <li>Price it as a fixed fee for the core website, plus separately priced extras (data migration, clean-up, extra reviews) and a monthly maintenance plan.</li>
+      <li>Ask for 40% upfront, 40% when the test site is approved and 20% at launch, with two review rounds included.</li>
+      <li>Walk away if the budget is below our cost, if they want our code or free work before signing, if there's no deposit, or if they won't say who the paying client is.</li>
+      <li>First step: send the agency our questions and ask to present the demo to HST directly.</li>
+    </ul>
+  </section>
+
+  <p class="foot">Prepared by TechNext, 3 October 2026. Internal and temporary: not listed on search engines; the link will be taken down after review. Effort, win chance and timings are TechNext estimates.</p>
+</div>
+</body>
+</html>
